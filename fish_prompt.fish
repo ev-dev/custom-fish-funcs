@@ -17,7 +17,8 @@
 # PURE_GIT_DIRTY_CHECK_INTERVAL Interval to check current Git remote for changes.
 #                               Defaults to 10 seconds.
 #
-# PURE_PROMPT_SYMBOL            Defines the prompt symbol. The default value is ❯.
+set PURE_PROMPT_SYMBOL 
+#Defines the prompt symbol. The default value is ❯.
 #
 # PURE_GIT_UP_ARROW             Defines the git up arrow symbol. The default value is ⇡.
 #
@@ -49,7 +50,8 @@ function _pure_git_fetch_allowed
         return 1
     end
     return 0
-end;
+end
+
 
 
 function _pure_timestamp
@@ -57,13 +59,34 @@ function _pure_timestamp
 end
 
 
-function _pure_cmd_max_exec_time;           _pure_get_var PURE_CMD_MAX_EXEC_TIME 5; end;
-function _pure_prompt_symbol;               _pure_get_var PURE_PROMPT_SYMBOL "❯"; end;
-function _pure_git_up_arrow;                _pure_get_var PURE_GIT_UP_ARROW "⇡"; end;
-function _pure_git_down_arrow;              _pure_get_var PURE_GIT_DOWN_ARROW "⇣"; end;
-function _pure_git_fetch_indicator;         _pure_get_var PURE_GIT_FETCH_INDICATOR "•"; end;
-function _pure_git_fetch_interval;          _pure_get_var PURE_GIT_FETCH_INTERVAL 1800; end;
-function _pure_git_dirty_check_interval;    _pure_get_var PURE_GIT_DIRTY_CHECK_INTERVAL 10; end;
+function _pure_cmd_max_exec_time
+    _pure_get_var PURE_CMD_MAX_EXEC_TIME 5
+end
+
+function _pure_prompt_symbol
+    _pure_get_var PURE_PROMPT_SYMBOL "❯"
+end
+
+function _pure_git_up_arrow
+    _pure_get_var PURE_GIT_UP_ARROW "⇡"
+end
+
+function _pure_git_down_arrow
+    _pure_get_var PURE_GIT_DOWN_ARROW "⇣"
+end
+
+function _pure_git_fetch_indicator
+    _pure_get_var PURE_GIT_FETCH_INDICATOR "•"
+end
+
+function _pure_git_fetch_interval
+    _pure_get_var PURE_GIT_FETCH_INTERVAL 1800
+end
+
+function _pure_git_dirty_check_interval
+    _pure_get_var PURE_GIT_DIRTY_CHECK_INTERVAL 10
+end
+
 
 
 function _pure_update_prompt
@@ -293,7 +316,7 @@ function fish_prompt
     # Output the prompt, left to right
 
     # Add a newline before new prompts
-    echo -e ''
+    #echo -e ''
 
     # Display username and hostname if logged in as root, in sudo or ssh session
     set -l uid (id -u)
@@ -353,4 +376,9 @@ function fish_prompt
     # Terminate with a nice prompt char
     echo -e ''
     echo -e -n -s $prompt_color (_pure_prompt_symbol) " " $normal
+end
+
+function .
+    cd ~
+    clear
 end

@@ -1,6 +1,9 @@
 function bwup
-	brew update $argv
-end
-function bwup
-	spin brew update $argv
+	set brewCMD "brew update "
+
+    if [ $argv ]
+        spin "$brewCMD $argv"
+    else
+        spin "$brewCMD"
+    end
 end
