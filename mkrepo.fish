@@ -3,13 +3,22 @@ function mkrepo
     set part2 "--desc='"
     set part3 "' > temp.txt"
 
-    if [ $argv[1] = 'help' ]
+    if begin
+            test -z "$argv"
+            or [ $argv[1] = 'help' ]
+            or [ $argv[1] = '-h' ]
+        end
+
         echo -e ' Custom Command: \'makerepo\' [<options>] <repo name> <description>\n'
         echo -e ' Utility to create and upload project to Github.\n'
         echo -e ' Options:'
         echo -e '      --push : if push is selected, the current directory will be uploaded to the new remote repository'
 
-    else if [ $argv[1] = '--push' ]
+    else if begin
+            [ $argv[1] = '--push' ]
+            or [ $argv[1] = '-p' ]
+        end
+
         spin "$part1 $argv[2] $part2 $argv[3..-1] $part3"
         rm temp.txt
 
