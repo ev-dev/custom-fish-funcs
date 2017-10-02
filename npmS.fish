@@ -1,3 +1,3 @@
-function npmS
-	npm install --save $argv
+function npms
+	npm start
 end

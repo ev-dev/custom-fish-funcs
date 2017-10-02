@@ -4,6 +4,6 @@ function local --argument dir
         ls
     else
         cd ~/webdev/JS/local-dev-repos/$argv
-        tree -C --dirsfirst --filelimit 20 -I node_modules
+        ls -1
     end
 end

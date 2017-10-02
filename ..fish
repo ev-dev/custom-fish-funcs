@@ -1,3 +1,4 @@
 function .
 	cd ~
+    clear
 end
