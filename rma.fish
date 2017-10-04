@@ -1,3 +1,3 @@
 function rma
-	rm -vrdf $argv
+	rm -rdf $argv
 end

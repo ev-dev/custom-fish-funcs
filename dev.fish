@@ -1,4 +1,3 @@
 function dev
-    cd ~/webdev/$argv
-    ls
+	npm run dev
 end

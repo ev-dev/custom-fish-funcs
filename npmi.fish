@@ -1,3 +1,3 @@
 function npmi
-	npm install
+	npm install $argv
 end
