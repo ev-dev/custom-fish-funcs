@@ -1,1 +1,0 @@
-/Users/admin/.config/fisherman/cbjohnson/fish_prompt.fish

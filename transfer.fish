@@ -1,1 +1,0 @@
-/Users/admin/.config/fisherman/transfer/transfer.fish

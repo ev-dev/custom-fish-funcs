@@ -1,1 +1,0 @@
-/Users/admin/.config/fisherman/tio/tio.fish

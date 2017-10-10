@@ -1,8 +1,0 @@
-function fish_title
-    if set -q settitle_title
-        echo $settitle_title
-    else
-    	echo (prompt_pwd)
-    end
-end
-
