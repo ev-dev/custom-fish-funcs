@@ -1,4 +1,4 @@
 # Defined in - @ line 2
-function ll
-	ls -l "$argv"
+function lt
+	ls -1 -t $argv
 end

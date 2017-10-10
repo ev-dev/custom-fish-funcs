@@ -125,9 +125,6 @@ function cl --argument fullName newNameOrFlag flag
                     set_color normal
                     npm install
                 case o
-                    git clone https://github.com/$fullName.git
-                    cd $newRepo
-
                     set_color green
                     echo -e '\n - Opening Repository in VSCode...\n'
                     set_color normal
