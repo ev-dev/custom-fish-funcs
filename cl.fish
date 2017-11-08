@@ -1,6 +1,6 @@
+# Defined in /var/folders/c_/pcyxn7d55sv0qhpt4j9_vvfw0000gn/T//fish.B0fSFw/cl.fish @ line 2
 function cl --argument fullName newNameOrFlag flag
-
-    if begin test -z "$fullName"
+	if begin test -z "$fullName"
             or test "$fullName" = 'help'
         end
         if test -z "$fullName"
@@ -72,7 +72,7 @@ function cl --argument fullName newNameOrFlag flag
             switch $key
                 case _
                     set_color cyan
-                    echo -e "\n - New local repo will be `$newNameOrFlag`\n"
+                    echo -e "\n - New local repo will be `$newNameOrFlag` \n"
 
                     set_color normal
                     git clone https://github.com/$fullName.git $newNameOrFlag
@@ -108,9 +108,9 @@ function cl --argument fullName newNameOrFlag flag
                     set_color cyan
                     echo -e '\n   New Repo Setup In:'
                     set_color normal
-                    echo " $currPWD\n"
+                    echo -e " $currPWD"
                     set_color cyan
-                    echo -e '   With Contents:'
+                    echo -e '\n   With Contents:'
                     set_color normal
                     ls -1
                     echo ' '

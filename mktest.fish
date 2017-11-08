@@ -1,5 +1,8 @@
+# Defined in /Users/admin/.config/fish/functions/mktest.fish @ line 2
 function mktest
-    cd ~/webdev/JS/test-projects
+	cd ~/webdev/JS/test-projects
+    #    set normal (set_color normal)
+    #    set greenU (set_color green --underline)
 
     if test -n "$argv"
         if begin
@@ -7,92 +10,57 @@ function mktest
                 or [ $argv[1] = '-h' ]
                 or [ $argv[1] = 'help' ]
             end
+            set normal (set_color normal)
+            set ital (set_color normal)
+            set dim (set_color normal)
+            set trueDim (set_color 989898)
+            set blueU (set_color blue -u)
+            set blue (set_color blue -o)
+            set green (set_color green)
+            set greenB (set_color green -o)
+            set yellow (set_color yellow -u -o)
+            set red (set_color red)
+            echo -e '\n\t\t'"$yellow"'Make Test'"$normal"'  '"$trueDim"'(Custom Command)\n'
+            echo -e '\t'"$normal"'Project generator for testing things quickly\n\twith no other setup required.\n'
 
-            echo -e ' Custom Command:  \'maketest\' [<options> | <existing project>]  (defaults to cd & ls test-projects)\n'
-            echo -e ' Project generator for testing things quickly\n with no other setup required.\n'
-            echo -e ' Options: [-cl | -n] <type or name> <new project name> <other options>\n'
-            echo -e '     --clone'
-            echo -e '      -cl <remote repo name> <new project name> [-i] <install options> :'
-            echo -e '      creates new project from remote repository (must give name as next argument)\n'
-            echo -e '      Clone Options: --install or -i:  run npm install after cloning repo'
-            echo -e '           postinstall options:'
-            echo -e '           --start (runs \'npm start\' after install)'
-            echo -e '           --build (runs \'npm run build\' after install)'
-            echo -e '           --build-start (runs both \'npm run build\' & \'npm start\')\n\n'
-            echo -e '     --new'
-            echo -e '      -n <boilerplate type> <new project name> [--watch]'
-            echo -e '      generates new project from custom boilerplates and begins git tracking\n'
-            echo -e '      Boilerplate Types:  [empty | nodejs | full]'
-            echo -e '           empty:  scaffolds basic blank project'
-            echo -e '           nodejs:  basic nodejs setup'
-            echo -e '           full:  comprehensive setup with a few common packages'
-            echo -e '      *optional \'--watch\' after project name will open project in chrome and livereload on changes\n\n'
+            echo -e '\t'"$blueU"'Usage'"$normal"':  '"$greenB"'mktest'"$normal"' ['"$blue"'options'"$normal"'] or ['"$blue"'existing project'"$normal"']\n'
+            #echo -e '\t'"$red"'Project generator for testing things quickly\n\twith no other setup required.\n'
+            echo -e '\t'"$blueU"'Options'"$normal"':\n'
+            echo -e '\t '"$green"'-n'"$normal"', '"$green"'--new '"$normal"' ['"$blue"'type'"$normal"'] ['"$blue"'new project name'"$normal"']'
+            echo -e '\t   '"$dim"'Generates new project from customized\n\t   boilerplates and begins tracking with git\n'
+            echo -e '\t'"$blueU"'Boilerplate Types'"$normal"':\n'
 
-        else if begin
-                [ $argv[1] = '--clone' ]
-                or [ $argv[1] = '-cl' ]
-            end
-
-            set repoName (string split / "$argv[2]")
-            echo -e ' selected create new project from remote repository...\n'
-            echo -e ' - cloning \''"$repoName[2]"'\' from github'
-            cl $argv[2]
-
-            if begin
-                    [ $argv[3] = '--install' ]
-                    or [ $argv[3] = '-i' ]
-                end
-
-                echo -e ' - installing npm packages\n'
-
-                spin "npm install > temp.txt"
-                lspack #custom npm package lister
-
-                if [ $argv[4] = '--start' ]
-                    echo -e ' - running npm start\n'
-                    npm start
-                else if [ $argv[4] = '--build' ]
-                    echo -e ' - building project\n'
-                    npm run build
-                else if [ $argv[4] = '--build-start' ]
-                    echo -e ' - building project\n'
-                    npm run build
-                    echo -e '\n - running npm start\n'
-                    npm start
-                end
-            end
+            echo -e '\t '"$green"'empty'"$dim"' - Scaffolds basic blank project'
+            echo -e '\t '"$green"'node'"$dim"' - Blank nodejs setup'
+            echo -e '\t '"$green"'exp'"$dim"' - Basic express server'
+            echo -e '\t '"$green"'exp-seq'"$dim"' - Express server with postgresSQL'
+            echo -e '\t '"$green"'react'"$dim"' - Simple react setup'
+            echo -e '\t '"$green"'redux'"$dim"' - React with redux setup'
+            echo -e '\t '"$green"'full'"$dim"' - Express, sequelize, react, react-redux\n'
+            set_color normal
 
         else if begin
                 [ $argv[1] = '--new' ]
                 or [ $argv[1] = '-n' ]
             end
 
-            echo -e ' selected create new project...\n'
+            set_color green
+            echo -e ' - selected create new project...\n'
 
+            set_color cyan
             if [ $argv[2] = 'full' ]
-                echo -e ' - generating new project with custom boilerplate settings'
-                echo -e ' - setting up npm packages and static page'
-
-                cp -R ./SCAFFOLD_GENERATOR ./"$argv[3]"
-                cd "$argv[3]"
+                echo -e ' - generating new project -\n'
+                git clone -b express-sequelize-react-redux git@github.com:ev-dev/ev-dev-starter.git "$argv[3]"
+                rm -rf ./.git
                 git init
-                npm init -y
-                cm 'Initial Commit: Cloned from Custom Scaffold Generator'
-                lst
                 echo ' '
+                npm install
+                cm 'Initial Commit: Forked from custom full starter'
+                echo ' '
+                code .
 
-                #open project in chrome and set page to refresh on changes in dir
-                if [ $argv[4] = '--watch' ]
-                    echo -e ' - opening new project\'s \'index.html\' in browser'
-                    chrome-cli open file://(pwd)/index.html
-                    echo -e ' - setting browser to refresh on changes in directory'
-                    echo -e ' - now watching ' "$argv[3]"
-                    echo ' '
-                    livereloadx ./
-                end
-
-            else if [ $argv[2] = 'nodejs' ]
-                echo -e ' - generating JavaScript scaffold...'
+            else if [ $argv[2] = 'node' ]
+                echo -e ' - Generating basic node.js project -\n'
                 mkdir ./"$argv[3]"
                 cd "$argv[3]"
                 git init
@@ -102,6 +70,54 @@ function mktest
                 cm 'Initial Commit: Only contains blank .js file'
                 echo ' '
                 code .
+
+            else if [ "$argv[2]" = 'exp-seq' ]
+                echo -e ' - Generating express/sequelize project -\n'
+                git clone -b express-sequelize git@github.com:ev-dev/ev-dev-starter.git "$argv[3]"
+                cd "$argv[3]"
+                rm -rf ./.git
+                git init
+                echo ' '
+                npm install
+                cm 'Initial Commit: Forked from custom express-sequelize starter'
+                echo ' '
+                code .
+
+            else if [ $argv[2] = 'react' ]
+                echo -e ' - Generating new react project -\n'
+                git clone -b react git@github.com:ev-dev/ev-dev-starter.git "$argv[3]"
+                cd "$argv[3]"
+                rm -rf ./.git
+                git init
+                echo ' '
+                npm install
+                cm 'Initial Commit: Forked from custom react starter'
+                echo ' '
+                code .
+
+            else if [ $argv[2] = 'redux' ]
+                echo -e ' - Generating new react-redux project -\n'
+                git clone -b react-redux git@github.com:ev-dev/ev-dev-starter.git "$argv[3]"
+                cd "$argv[3]"
+                rm -rf ./.git
+                git init
+                echo ' '
+                npm install
+                cm 'Initial Commit: Forked custom react-redux starter'
+                echo ' '
+                code .
+
+                #            else if [ $argv[2] = 'fullstack' ]
+                #               echo -e ' - Generating new react-redux-sequelize project -\n'
+                #              git clone -b react-redux-sequelize git@github.com:ev-dev/ev-dev-starter.git "$argv[3]"
+                #             cd "$argv[3]"
+                #            rm -rf ./.git
+                #           git init
+                #          echo ' '
+                #         npm install
+                #        cm 'Initial Commit: Forked custom react-redux-sequelize starter'
+                #       echo ' '
+                #      code .
 
             else if [ $argv[2] = 'empty' ]
                 mkd ./"$argv[3]"

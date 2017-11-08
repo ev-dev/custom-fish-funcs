@@ -1,12 +1,19 @@
+# Defined in /Users/admin/.config/fish/functions/speed.fish @ line 2
 function speed
-    echo -e '\n-----------------------------------'
-    echo -e 'Executing SpeedTest 5x for Accuracy'
-    echo -e '-----------------------------------\n'
-    echo -e '\n----------- Round 1 ------------\n'
-    spin "speedtest --timeout 30"
-    echo -e '\n------------ Round 2 ------------\n'
-    spin "speedtest --timeout 30"
-    echo -e '\n------------ Round 3 ------------\n'
-    spin "speedtest --timeout 30"
-    echo -e '\n---------- COMPLETE -----------\n\n'
+	set runTimes 3
+    set logFile ~/.config/speedtest/speedtestLog.js
+
+    if test -n "$argv"
+        set runTimes $argv
+    end
+
+    set_color -u cyan
+    echo -e '\n    Executing SpeedTest '"$runTimes"'x for Accuracy    \n'
+    set_color normal
+
+    spin "runSpeedTest $runTimes"
+
+    node ~/.config/speedtest/calculateAvgSpeed.js
+
+    rm $logFile
 end
