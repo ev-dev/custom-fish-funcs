@@ -237,7 +237,10 @@ function prompt_status -d "the symbols for a non zero exit status, root and back
     end
 end
 
-if printf '%s\n' '2.2.0' $FISH_VERSION | sort --check=silent --version-sort
+# *** ORIGINAL VERSION ***
+#if printf '%s\n' '2.2.0' $FISH_VERSION | sort --check=silent --version-sort
+
+if printf '%s\n' '2.2.0' $FISH_VERSION | sort --check
   # Current version ≥ 2.2.0
   function available -a name -d "Check if a function or program is available."
     command -v "$name" ^/dev/null >&2
