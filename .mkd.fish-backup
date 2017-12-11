@@ -1,0 +1,42 @@
+function mkd
+    if count $argv <3
+        set $newdir $argv
+        set $newdir $argv[-1]
+        set $flags $argv[1..-2]
+        set $firstFlag $argv[1]
+        set $otherFlags $argv[2..-1]
+
+        mkdir $newdir
+
+        if test -n "$firstFlag" = -f
+            for file in "$otherFlags"
+                touch "$file"
+            end
+        end
+
+        function makefiles
+            for file in "$argv"
+                touch "$file"
+            end
+        end
+
+        for flag in $flags
+            switch "$flag"
+                case -x --nocd
+                    ls
+                case -n --npm
+                    cd $newdir
+                    npm init -y
+                case -g --git
+                    cd $newdir
+                    git init
+                case -w --web
+                    cd $newdir
+                    mkdir scripts styles
+                    touch index.html index.js styles/styles.css README.md
+                    ls
+                case '*'
+                    cd $newdir
+            end
+        end
+    end

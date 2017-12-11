@@ -1,0 +1,4 @@
+function .
+	cd ~
+    clear
+end
