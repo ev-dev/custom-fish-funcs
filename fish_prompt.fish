@@ -1,1 +1,1 @@
-/Users/admin/.local/share/omf/themes/sushi/fish_prompt.fish
+/Users/admin/.local/share/omf/themes/nelsonjchen/fish_prompt.fish
