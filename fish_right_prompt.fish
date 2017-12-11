@@ -17,8 +17,8 @@ function fish_right_prompt
 	set -g __fish_git_prompt_char_dirtystate "$B$N $YW±$YW_B"
 #	set -g __fish_git_prompt_char_dirtystate "$RD_B       ±$color_reset"
 #	set -g __fish_git_prompt_char_cleanstate "$GR_B$N "
-	set -g __fish_git_prompt_char_cleanstate "$GR_B$N"
-	set -g __fish_git_prompt_char_stagedstate "$YW_B●$N"
+	set -g __fish_git_prompt_char_cleanstate "$B$N $GR_B$N"
+	set -g __fish_git_prompt_char_stagedstate "$B$N $YW_B●$N"
 	set -g __fish_git_prompt_char_stagedstate "$CY_B…$N"
 	set -g __fish_git_prompt_char_stateseparator ' '
 	
