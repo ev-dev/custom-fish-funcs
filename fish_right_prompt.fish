@@ -11,14 +11,14 @@ function fish_right_prompt
 	set -g __fish_git_prompt_showcolorhints 'yes'
 	
 	set -g __fish_git_prompt_char_dirtystate "$RD_B±$color_reset"
-	set -g __fish_git_prompt_char_cleanstate "$GR$color_reset"
+	set -g __fish_git_prompt_char_cleanstate "$GR$color_reset"
 	set -g __fish_git_prompt_char_stagedstate "$YW_B●$color_reset"
 	set -g __fish_git_prompt_char_stagedstate "$CY_B…$color_reset"
 	set -g __fish_git_prompt_char_stateseparator ' '
 	
 	set -g __fish_git_prompt_color_branch "--bold" "--bold" "yellow"
 
-	set git (__fish_git_prompt "$color_bold_magenta> $color_reset%s")
+	set git (__fish_git_prompt "$MG_B $color_reset%s")
 
   echo -ns $git
 
