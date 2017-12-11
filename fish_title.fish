@@ -1,0 +1,1 @@
+/Users/admin/.config/fisherman/settitle/fish_title.fish
