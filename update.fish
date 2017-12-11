@@ -1,0 +1,1 @@
+/Users/admin/.config/fisherman/update/functions/update.fish
