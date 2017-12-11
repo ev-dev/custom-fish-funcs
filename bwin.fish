@@ -1,3 +1,4 @@
+# Defined in /Users/admin/.config/fish/functions/bwin.fish @ line 2
 function bwin
 	for i in $argv
         if test (string sub -s 1 -l 2 $i) = 'c/'

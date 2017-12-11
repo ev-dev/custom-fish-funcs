@@ -1,3 +1,4 @@
+# Defined in /Users/admin/.config/fish/functions/path.fish @ line 2
 function path
 	if test -z "$argv"
         echo -e {$PATH\\n}

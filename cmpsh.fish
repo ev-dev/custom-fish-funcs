@@ -1,5 +1,6 @@
+# Defined in - @ line 2
 function cmpsh
 	git add .
-git commit -m "$argv"
-git push
+    git commit -m "$argv"
+    push
 end
