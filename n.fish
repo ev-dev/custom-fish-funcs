@@ -1,3 +1,4 @@
+# Defined in - @ line 2
 function n
-	nano $argv
+	nextd
 end

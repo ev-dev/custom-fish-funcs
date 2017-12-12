@@ -1,11 +1,11 @@
-# Defined in - @ line 2
+# Defined in /Users/admin/.config/fish/functions/tst.fish @ line 2
 function tst
 	if test -z "$argv"
         set_color red
         echo -e '\n - Must provide name of existing test project or -a to list all...\n'
         set_color normal
     else
-        cd ~/webdev/JS/test-projects
+        cd ~/dev/webdev/JS/test-projects
         if [ $argv[1] = '-a' ]
             l -1C
         else

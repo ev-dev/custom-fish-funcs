@@ -1,3 +1,4 @@
+# Defined in - @ line 2
 function p
-	pwd
+	prevd
 end

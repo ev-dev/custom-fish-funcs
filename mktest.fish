@@ -10,8 +10,8 @@ function mktest
     set yellow (set_color yellow -u -o)
     set red (set_color red)
 
-    cd ~/webdev/JS/test-projects
-
+    cd $tests
+    
     if test -z "$argv"
         #eko -nl 'No Args.. just cding'
     

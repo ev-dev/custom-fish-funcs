@@ -15,7 +15,7 @@ function bwi
             echo -e '___________________________________________________________'
             set_color normal
         else
-            echo -e '\n\n'
+#            echo -e '\n\n'
 
             #            set_color black -b brwhite
             echo -e '\t\t- Package:  `'"$i"'` -\t\t\t\t'

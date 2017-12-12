@@ -1,9 +1,10 @@
+# Defined in - @ line 2
 function local --argument dir
 	if test -z "$dir"
-        cd ~/webdev/JS/local-dev-repos
+        cd $local
         ls
     else
-        cd ~/webdev/JS/local-dev-repos/$argv
+        cd $local/$dir
         ls -1
     end
 end
