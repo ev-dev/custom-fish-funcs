@@ -1,7 +1,7 @@
 function fish_prompt
 	set -l realhome ~
 	set -l git_output
-	set directory (set_color --bold green)(echo $PWD | sed -e "s|^$realhome|~|")(set_color normal)
+	set directory (set_color green)(echo $PWD | sed -e "s|^$realhome|~|")(set_color normal)
 
 	set_color $fish_color_cwd
 	echo -s $directory ' ' (git-radar --fish --fetch)
