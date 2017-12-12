@@ -5,7 +5,7 @@ function tst
         echo -e '\n - Must provide name of existing test project or -a to list all...\n'
         set_color normal
     else
-        cd ~/dev/webdev/JS/test-projects
+        cd $tests
         if [ $argv[1] = '-a' ]
             l -1C
         else
