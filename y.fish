@@ -4,5 +4,10 @@ function y
         eko -NL $y'Found package-lock.json...Removing.'
         rm package-lock.json
     end
-    yarn
+
+    if test -z "$argv"
+        yarn
+    else
+        yarn add $argv
+    end
 end

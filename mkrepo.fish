@@ -1,4 +1,4 @@
-# Defined in /Users/admin/.config/fish/functions/mkrepo.fish @ line 1
+# Defined in /Users/admin/.config/fish/functions/mkrepo.fish @ line 2
 function mkrepo
 	set part1 "gcli repo create "
     set part2 "--desc='"
@@ -20,6 +20,10 @@ function mkrepo
             or [ $argv[1] = '-p' ]
         end
 
+        if test -d '.git'
+          eko -nltb $YL'- Directory is already a repository'
+        end
+        
         spin "$part1 $argv[2] $part2 $argv[3..-1] $part3"
         rm temp.txt
 
