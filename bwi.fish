@@ -15,11 +15,7 @@ function bwi
             echo -e '___________________________________________________________'
             set_color normal
         else
-<<<<<<< HEAD
 #            echo -e '\n\n'
-=======
-            echo -e '\n\n'
->>>>>>> master
 
             #            set_color black -b brwhite
             echo -e '\t\t- Package:  `'"$i"'` -\t\t\t\t'
