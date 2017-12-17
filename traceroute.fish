@@ -1,0 +1,1 @@
+/Users/admin/.config/fisherman/grc/functions/traceroute.fish
