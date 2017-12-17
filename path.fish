@@ -1,4 +1,4 @@
-# Defined in /Users/admin/.config/fish/functions/path.fish @ line 2
+# Defined in - @ line 2
 function path
 	if test -z "$argv"
         echo -e {$PATH\\n}
@@ -15,14 +15,15 @@ function path
         set origPath (string replace -r '^(\/Users\/admin)' '~' "$orig")
         set absPath (string replace -r '^(\/Users\/admin)' '~' "$abs")
 
-        echo -se $PR$I" $origPath\n          "$N$YL'↕      ↕'$N"\n$absPath"
+        echo -se $PRb" $origPath "$N$YLb''$N"\n $absPath\n"
     else
         set orig (which $argv)
         set origPath (string replace -r '^(\/Users\/admin)' '~' "$orig")
         if test -L $orig
             set abs (realpath $origPath)
             set absPath (string replace -r '^(\/Users\/admin)' '~' "$abs")
-            echo -se $PR$I" $origPath\n          "$N$YL'↕      ↕'$N$RD"\n$absPath"
+            echo -se $PRb" $origPath "$N$YLb''$N$RD"\n $absPath\n"
+            #echo -se $PR$I" $origPath\n          "$N$YL'        ↕'$N$RD"\n $absPath\n"
         else
             echo -se $RD" $origPath\n"
             return
