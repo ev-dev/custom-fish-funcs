@@ -1,0 +1,1 @@
+/Users/admin/.config/fisherman/free/functions/free.fish
