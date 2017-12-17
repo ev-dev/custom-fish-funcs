@@ -1,4 +1,8 @@
 function fish_user_key_bindings
+    # Bash style command combiners
+    bind "&&" 'commandline -i "; and"'
+    bind "||" 'commandline -i "; or"'
+
     ### fzf ###
     set -q FZF_LEGACY_KEYBINDINGS
     or set -l FZF_LEGACY_KEYBINDINGS 1

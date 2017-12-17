@@ -1,0 +1,1 @@
+/Users/admin/.config/fisherman/jetty/functions/fish_greeting.fish

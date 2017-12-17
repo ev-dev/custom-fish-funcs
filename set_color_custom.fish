@@ -1,0 +1,1 @@
+/Users/admin/.config/fisherman/jetty/functions/set_color_custom.fish

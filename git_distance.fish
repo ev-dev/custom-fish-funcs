@@ -1,0 +1,1 @@
+/Users/admin/.config/fisherman/git_distance/functions/git_distance.fish
