@@ -11,11 +11,15 @@ function lst
         else
             if [ $argv = '-v' ]
                 tree -CD --du -h --dirsfirst -I node_modules -L 3 --filelimit 15
+            else if [ $argv = '-f' ]
+                tree -C --dirsfirst -I node_modules -L 3
+            else if [ $argv = '-vf' ]
+                tree -CD --du -h --dirsfirst -I node_modules -L 3
             else
                 tree -C --dirsfirst -I node_modules -L 3 --filelimit 15 $argv
             end
         end
     else
-        tree -C --dirsfirst -I node_modules -L 3 --filelimit 15
+        tree -C --dirsfirst -I node_modules -L 3 --filelimit 20
     end
 end
