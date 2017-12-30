@@ -1,4 +1,4 @@
 # Defined in - @ line 2
 function ficonfig
-	m $config/fish/config.fish
+	m $conf/fish/config.fish
 end

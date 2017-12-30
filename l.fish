@@ -1,4 +1,4 @@
 # Defined in - @ line 2
 function l
-	ls $argv
+	ls -1 $argv
 end

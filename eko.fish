@@ -6,7 +6,7 @@ function eko
     # echo -e "ARGV[1] IS = $argv[1]"
     # echo -e "ARGV[2] IS = $argv[2]"
 
-	if test (count $argv) -lt 2
+    if test (count $argv) -lt 2
         echo -e "$argv$N"
     else
         if [ $argv[1] = '-n' ]
@@ -29,6 +29,27 @@ function eko
                     echo -e '\nhit _ ' #> /dev/null
                     echo -e '$flags  =  '"$flags" #> /dev/null
                     echo -e '$argv  =  '"$argv\n" #> /dev/null
+
+                # DEFAULT option (used for Beginning or Processing a task)
+                case d B beg
+                    echo -e $YL$B'\n\t '$YL$B$I$U'Process'$N$WH$B$D' '$N"$FINAL_STR...\n"
+
+                # used for informational messages
+                case I info
+                    echo -e $BL$B'\n\t    '$N$BL$I$U'Info'$N$WH$B$D' '$N"$FINAL_STR\n"
+
+                # used for success messages
+                case S success
+                    echo -e $GR'\n\t '$GR$I$U'Success'$N$WH$B$D' '$N"$FINAL_STR\n"
+
+                # used for error messages
+                case E ERR error
+                    echo -e $RD'\n\t   '$RD$B$I$U'Error'$N$WH$B$D' '$N"$FINAL_STR\n"
+
+                # used for warning messages
+                case W warn
+                    echo -e $PR$B'\n\t '$N$PR$I$U'Warning'$N$WH$B$D' '$N"$FINAL_STR\n"
+                                
                 case ln nl NL NLS NLBA NLAB nw nwlns lns lines
                     echo -e "\n$FINAL_STR\n"
                 case lb nlb NLB LB lnb lnbf lnbefore bef bf
@@ -37,7 +58,7 @@ function eko
                     echo -e "$FINAL_STR\n"
                 case ld nld NLD LD lnd lndb lndub lndouble dub db
                     echo -e "\n\n$FINAL_STR\n\n"
-                
+
                 case t z T TB tb tab
                     echo -e "\t$FINAL_STR"
                 case nt lt lnt lntb nlt nltb NLT NLTB LNT
@@ -57,7 +78,7 @@ function eko
                     echo -e "  $FINAL_STR\n"
                 case nlb2sp
                     echo -e "\n  $FINAL_STR"
-                
+
                 case 4sp sp4
                     echo -e "    $FINAL_STR"
                 case n4sp nl4sp ln4sp nsp4 nlsp4
@@ -66,7 +87,7 @@ function eko
                     echo -e "    $FINAL_STR\n"
                 case nlb4sp
                     echo -e "\n    $FINAL_STR"
-                
+
                 case 6sp sp6
                     echo -e "      $FINAL_STR"
                 case n6sp nl6sp ln6sp nsp6 nlsp6
@@ -75,7 +96,7 @@ function eko
                     echo -e "      $FINAL_STR\n"
                 case nlb6sp
                     echo -e "\n      $FINAL_STR"
-                
+
                 case '*'
                     echo 'hit star'
                     set normalized
@@ -84,6 +105,6 @@ function eko
                     end
                     echo -e "$normalized"
             end
-        end    
+        end
     end
 end

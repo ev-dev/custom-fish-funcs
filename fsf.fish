@@ -1,9 +1,10 @@
+# Defined in - @ line 2
 function fsf
 	if test -n "$argv"
-        cd ~/webdev/JS/learn-js/fullstack/fellow/$argv
+        cd "$learn/fullstack/fellow/$argv"
         ls -1
     else
-        cd ~/webdev/JS/learn-js/fullstack/fellow
+        cd $learn/fullstack/fellow
         ls -1
     end
 end

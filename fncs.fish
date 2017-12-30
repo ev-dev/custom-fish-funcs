@@ -1,4 +1,4 @@
-# Defined in - @ line 1
+# Defined in - @ line 2
 function fncs
-	cd $config/fish/functions
+	cd $conf/fish/functions
 end

@@ -1,3 +1,5 @@
+# Defined in - @ line 2
 function yr
-	yarn run $argv
+	clear
+    yarn run $argv
 end
