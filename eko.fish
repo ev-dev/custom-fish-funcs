@@ -24,6 +24,18 @@ function eko
                 set FINAL_STR $FINAL_STR "$arg$N"
             end
 
+            # set firstCap (string upper (string sub -l 1 $FINAL_STR))
+            set CAP_STR (string upper (string sub -s 2 -l 1 "$FINAL_STR"))(string sub -s 3 "$FINAL_STR")
+            # set firstCap (string upper $firstCh)
+            # set remChars (string sub -s 3 "$FINAL_STR")
+            # set CAP_STR "$firstCap$remChars"
+      
+#            strup $FINAL_STR
+#            echo "cappedString is:  $cappedString"
+
+#            set CAP_STR $cappedString
+ #           set -e cappedString
+            
             switch $flags
                 case _
                     echo -e '\nhit _ ' #> /dev/null
@@ -31,24 +43,24 @@ function eko
                     echo -e '$argv  =  '"$argv\n" #> /dev/null
 
                 # DEFAULT option (used for Beginning or Processing a task)
-                case d B beg
-                    echo -e $YL$B'\n\t '$YL$B$I$U'Process'$N$WH$B$D' '$N"$FINAL_STR...\n"
+                case d P B beg
+                    echo -e $YL$B'\n\t '$YL$B$I$U'Process'$N$WH$B$D'  '$N"$CAP_STR...\n"
 
                 # used for informational messages
                 case I info
-                    echo -e $BL$B'\n\t    '$N$BL$I$U'Info'$N$WH$B$D' '$N"$FINAL_STR\n"
+                    echo -e $BL$B'\n\t    '$N$BL$I$U'Info'$N$WH$B$D'  '$N"$CAP_STR\n"
 
                 # used for success messages
                 case S success
-                    echo -e $GR'\n\t '$GR$I$U'Success'$N$WH$B$D' '$N"$FINAL_STR\n"
+                    echo -e $GR'\n\t '$GR$I$U'Success'$N$WH$B$D'  '$N"$CAP_STR\n"
 
                 # used for error messages
                 case E ERR error
-                    echo -e $RD'\n\t   '$RD$B$I$U'Error'$N$WH$B$D' '$N"$FINAL_STR\n"
+                    echo -e $RD'\n\t   '$RD$B$I$U'Error'$N$WH$B$D'  '$N"$CAP_STR\n"
 
                 # used for warning messages
                 case W warn
-                    echo -e $PR$B'\n\t '$N$PR$I$U'Warning'$N$WH$B$D' '$N"$FINAL_STR\n"
+                    echo -e $PR$B'\n\t '$N$PR$I$U'Warning'$N$WH$B$D'  '$N"$CAP_STR\n"
                                 
                 case ln nl NL NLS NLBA NLAB nw nwlns lns lines
                     echo -e "\n$FINAL_STR\n"

@@ -1,4 +1,4 @@
-# Defined in - @ line 1
+# Defined in - @ line 2
 function warn
 	eko -W $argv
 end

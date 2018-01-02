@@ -1,3 +1,5 @@
+# Defined in - @ line 2
 function ys
-	yarn start
+	clear
+    yarn start
 end
