@@ -47,5 +47,5 @@ function fish_prompt
     set ve (printf "(%s)" (basename $VIRTUAL_ENV))
   end
   
-  echo -nes "$ve $I$pwd $N$git_output\n$__fish_prompt_char "
+  echo -nes "\n$ve $I$pwd $N$git_output\n$__fish_prompt_char "
 end

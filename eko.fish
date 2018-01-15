@@ -44,23 +44,27 @@ function eko
 
                 # DEFAULT option (used for Beginning or Processing a task)
                 case d P B beg
-                    echo -e $YL$B'\n\t '$YL$B$I$U'Process'$N$WH$B$D'  '$N"$CAP_STR...\n"
+                    echo -e '    '$YL$B' '$YL$B$I$U'Process'$N$WH$B$D' ⇨ '$N"$CAP_STR..."
 
                 # used for informational messages
                 case I info
-                    echo -e $BL$B'\n\t    '$N$BL$I$U'Info'$N$WH$B$D'  '$N"$CAP_STR\n"
+                    # echo -e $BL$B'\n     '$N$BL$I$U'Info'$N"  $CAP_STR\n"
+                    echo -e '    '$BL$B' '$N$BL$I$U'Info'$N$WH$B$D' ⇨ '$N"$CAP_STR"
 
                 # used for success messages
                 case S success
-                    echo -e $GR'\n\t '$GR$I$U'Success'$N$WH$B$D'  '$N"$CAP_STR\n"
+                    echo -e '    '$GR' '$GR$I$U'Success'$N$WH$B$D' ⇨ '$N"$CAP_STR"
 
                 # used for error messages
                 case E ERR error
-                    echo -e $RD'\n\t   '$RD$B$I$U'Error'$N$WH$B$D'  '$N"$CAP_STR\n"
+                    echo -e '    '$RD' '$RD$B$I$U'Error'$N$WH$B$D' ⇨ '$N"$CAP_STR"
+                    # echo -e $RD'\n\t   '$RD$B$I$U'Error'$N$WH$B$D'   '$N"$CAP_STR\n"
 
                 # used for warning messages
                 case W warn
-                    echo -e $PR$B'\n\t '$N$PR$I$U'Warning'$N$WH$B$D'  '$N"$CAP_STR\n"
+                    echo -e '    '$PR$B' '$N$PR$I$U'Warning'$N$WH$B$D' ⇨ '$N"$CAP_STR"
+                    # echo -e '\n    '$PR$B''$N$PR$I$U'Warning'$N$PR$B'  '$N$WH$B$D' ▏'$N"$CAP_STR\n"
+                    # echo -e $PR$B'\n\t '$N$PR$I$U'Warning'$N$WH$B$D'   '$N"$CAP_STR\n"
                                 
                 case ln nl NL NLS NLBA NLAB nw nwlns lns lines
                     echo -e "\n$FINAL_STR\n"

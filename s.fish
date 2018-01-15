@@ -1,4 +1,1 @@
-# Defined in - @ line 1
-function s
-	sudo $argv
-end
+/Users/admin/.config/fisherman/fasd/functions/s.fish
