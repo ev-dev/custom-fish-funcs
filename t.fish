@@ -1,3 +1,4 @@
+# Defined in /Users/admin/.config/fish/functions/t.fish @ line 1
 function t
 	if test -n "$argv"
         set secondChar (string sub --length 1 $argv)

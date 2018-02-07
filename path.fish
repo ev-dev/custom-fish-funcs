@@ -5,35 +5,35 @@ function path
         echo -e {$PATH\\n}
         return
     else if test (count $argv) -eq 1
-        set orig (which $argv)
-        set origPath (string replace -r '^(\/Users\/admin)' '~' "$orig")
-        set abs (realpath $origPath)
-        set absPath (string replace -r '^(\/Users\/admin)' '~' "$abs")
-
-        if test -e "$argv"
-            ekko 'case 2'
+        if test -e "$argv" -o -L "$argv"
             set abs (realpath "$argv")
             set absPath (string replace -r '^(\/Users\/admin)' '~' "$abs")
-            echo -se " $absPath\n"
-        else if test -L "$argv"
-            ekko 'case 3'
             set cwd (pwd)
-            set orig "$cwd/$argv"
-            set abs (readlink "$argv")
+            set removeRelPath (string replace -r '(\.\/)' '' "$argv")
+            set requestedAbsPath "$cwd/$removeRelPath"
+            set requestedTruePath (string replace -r '^(\/Users\/admin)' '~' "$requestedAbsPath")
 
+            inf -a "requested "$YL$B$I"$argv" $N'found in path as symbolic link (case #1)'
+            echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$requestedTruePath"
+            echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$absPath"
+        else if test -L $orig
+            set orig (which $argv)
             set origPath (string replace -r '^(\/Users\/admin)' '~' "$orig")
+            set abs (realpath $orig)
             set absPath (string replace -r '^(\/Users\/admin)' '~' "$abs")
 
-            echo -se $PRb" $origPath "$N$YLb''$N"\n $absPath\n"
-        else if test -L $orig
-            inf -a "command "$YL$B$I"$argv" $N'found in path as symbolic link'
+            inf -a "command "$YL$B$I"$argv" $N'found in path as symbolic link (case #2)'
             echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$origPath"
             echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$absPath"
         else
-            ekko 'case 4'
-            warn "path shown for $argv may not be accurate"
-            echo -se $RD" $origPath\n"
-            return
+            set which_path (which $argv)
+            set realpath_which (realpath $which_path)
+            set formatted (string replace -r '^(\/Users\/admin)' '~' "$realpath_which")
+
+            warn "path shown for $argv may not be accurate (case #5)"
+            inf -a "command "$YL$B$I"$argv" $N'found in path as symbolic link (case #3)'
+            echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$which_path"
+            echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$realpath_which"
         end
     else if test (count $argv) -eq 2
         set orig (which $argv[1])
@@ -45,14 +45,13 @@ function path
                 [ "$argv[2]" = '-c' ]
                 or [ "$argv[2]" = '--cd' ]
             end
-            inf -a "command "$YL$B$I"$argv[1]" $N'found in path as symbolic link'
+            inf -a "command "$YL$B$I"$argv[1]" $N'found in path as symbolic link (case #4)'
             echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$origPath"
             echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$absPath"
             proc -b 'entering parent directory for' $YL$B$I"$argv[1]"
 
             set absParent (string replace -r '(\/\w+)$' '' "$abs")
             cd "$absParent"
-            #echo -e 'absParent is' $RD"$absParent"
         else
             err "$argv[1] had unknown option $argv[2]"
         end

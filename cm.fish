@@ -1,5 +1,5 @@
-# Defined in /Users/admin/.config/fish/functions/cm.fish @ line 1
+# Defined in - @ line 2
 function cm
 	git add .
-git commit -m "$argv"
+    git commit -m "$argv"
 end
