@@ -1,3 +1,4 @@
+# Defined in - @ line 2
 function lsa
-	ls -a
+	exa -a
 end

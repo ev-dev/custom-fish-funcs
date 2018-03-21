@@ -1,4 +1,4 @@
 # Defined in - @ line 2
 function ll
-	ls -l
+	exa -l
 end
