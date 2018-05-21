@@ -23,3 +23,5 @@ function fish_user_key_bindings
     bind -M $_pisces_bind_mode \t _pisces_complete
     ### pisces ###
 end
+
+fzf_key_bindings

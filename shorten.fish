@@ -1,0 +1,1 @@
+/Users/admin/.config/fisherman/yourls/functions/shorten.fish

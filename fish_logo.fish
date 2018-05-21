@@ -1,0 +1,1 @@
+/Users/admin/.config/fisherman/fish_logo/functions/fish_logo.fish
