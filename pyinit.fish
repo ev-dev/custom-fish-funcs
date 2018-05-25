@@ -9,10 +9,10 @@ function pyinit
 
     echo -e "$venv\n__pycache__\n" >./.gitignore
 
-    virtualenv "$venv" >/dev/null
+    virtualenv --system-site-packages -p python3 "$venv" >/dev/null
     bass source "$venv/bin/activate" >/dev/null ^/dev/null
 
-    pip freeze >requirements.txt
+    pip3 freeze >requirements.txt
 
     cm 'Initial Commit: Python virtual environment established' >/dev/null
 

@@ -5,7 +5,10 @@ function path
         echo -e {$PATH\\n}
         return
     else if test (count $argv) -eq 1
-        if test -e "$argv" -o -L "$argv"
+        if test (type -t "$argv") = function
+            inf -a "entry "$YL$B$I"$argv" $N'is a fish function'
+
+        else if test -e "$argv" -o -L "$argv"
             set abs (realpath "$argv")
             set absPath (string replace -r '^(\/Users\/admin)' '~' "$abs")
             set cwd (pwd)
@@ -13,7 +16,7 @@ function path
             set requestedAbsPath "$cwd/$removeRelPath"
             set requestedTruePath (string replace -r '^(\/Users\/admin)' '~' "$requestedAbsPath")
 
-            inf -a "requested "$YL$B$I"$argv" $N'found in path as symbolic link (case #1)'
+            inf -a "entry "$YL$B$I"$argv" $N'found in $PATH as symlink'
             echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$requestedTruePath"
             echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$absPath"
         else if test -L $orig
@@ -22,7 +25,7 @@ function path
             set abs (realpath $orig)
             set absPath (string replace -r '^(\/Users\/admin)' '~' "$abs")
 
-            inf -a "command "$YL$B$I"$argv" $N'found in path as symbolic link (case #2)'
+            inf -a "entry "$YL$B$I"$argv" $N'found in $PATH as symlink'
             echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$origPath"
             echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$absPath"
         else
@@ -30,8 +33,8 @@ function path
             set realpath_which (realpath $which_path)
             set formatted (string replace -r '^(\/Users\/admin)' '~' "$realpath_which")
 
-            warn "path shown for $argv may not be accurate (case #5)"
-            inf -a "command "$YL$B$I"$argv" $N'found in path as symbolic link (case #3)'
+            warn "path shown for $argv may not be accurate"
+            inf -a "entry "$YL$B$I"$argv" $N'found in $PATH as symlink'
             echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$which_path"
             echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$realpath_which"
         end

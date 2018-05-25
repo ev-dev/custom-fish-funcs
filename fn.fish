@@ -2,5 +2,6 @@
 function fn
 	funced $argv
     funcsave $argv
-    echo -e "\t\nfunction '$argv' saved."
+
+    inf -ba "Function '$argv' saved"
 end
