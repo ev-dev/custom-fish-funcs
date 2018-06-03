@@ -1,4 +1,4 @@
-# Defined in - @ line 2
+# Defined in /Users/admin/.config/fish/functions/path.fish @ line 2
 function path
 	if test -z "$argv"
         inf '$PATH environment variable listed 1st down'
@@ -7,6 +7,7 @@ function path
     else if test (count $argv) -eq 1
         if test (type -t "$argv") = function
             inf -a "entry "$YL$B$I"$argv" $N'is a fish function'
+            fn "$argv"
 
         else if test -e "$argv" -o -L "$argv"
             set abs (realpath "$argv")

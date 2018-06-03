@@ -1,4 +1,14 @@
-# Defined in /Users/admin/.config/fish/functions/ya.fish @ line 2
+# Defined in - @ line 2
 function ya
-	yarn add $argv
+	if test "$argv[1]" = '-c'
+        or test "$argv[1]" = '--clean'
+        or test "$argv[-1]" = '-c'
+        or test "$argv[-1]" = '--clean'
+
+        proc -b 'Cleaning modules'
+        rma ./node_modules yarn.lock
+        yarn add $argv[2..-1]
+    else
+        yarn add $argv
+    end
 end

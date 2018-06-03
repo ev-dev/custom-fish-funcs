@@ -1,4 +1,4 @@
-# Defined in /Users/admin/.config/fish/functions/pack.fish @ line 1
+# Defined in - @ line 2
 function pack
-	micro package.json
+	m package.json
 end
