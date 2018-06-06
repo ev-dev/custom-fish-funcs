@@ -9,7 +9,7 @@ function pyinit
 
     echo -e "$venv\n__pycache__\n" >./.gitignore
 
-    virtualenv --system-site-packages -p python3 "$venv" >/dev/null
+    virtualenv -p python3 "$venv" >/dev/null
     bass source "$venv/bin/activate" >/dev/null ^/dev/null
 
     pip3 freeze >requirements.txt

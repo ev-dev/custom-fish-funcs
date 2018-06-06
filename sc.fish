@@ -2,7 +2,7 @@
 function sc
 	set allCmds (string split \n (string replace -a -r '[\{\},"]' '' (/bin/cat package.json | jq '.scripts')))
 
-    eko '          '$U'NPM Scripts'$N'\n'
+    eko '            '$U'Scripts'$N'\n'
     for singleCmd in $allCmds
         if test -n "$singleCmd"
             set formated (string split ': ' "$singleCmd")

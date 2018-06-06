@@ -7,6 +7,12 @@ function y
 
     if test -z "$argv"
         yarn
+    else if test "$argv" = '-c'
+        or test "$argv" = '--clear'
+
+        proc -b 'Cleaning modules'
+        rma ./node_modules yarn*
+        yarn
     else
         yarn add $argv
     end

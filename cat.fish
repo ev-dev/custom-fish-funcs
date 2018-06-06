@@ -1,4 +1,4 @@
-# Defined in - @ line 1
+# Defined in - @ line 2
 function cat
-	highlight -O truecolor $argv
+	highlight -O truecolor $argv --force
 end
