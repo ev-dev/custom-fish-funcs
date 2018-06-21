@@ -1,4 +1,4 @@
-# Defined in - @ line 1
+# Defined in - @ line 2
 function init_dir_aliases
 	set -g tmp ~/temp
     set -g temp ~/temp
@@ -12,7 +12,7 @@ function init_dir_aliases
 
     set -g dev ~/dev
     set -g prod "$dev/production"
-    set -g q "$prod/quartolio"
+    set -g q "$dev/quartolio"
 
     set -g js "$dev/js"
     set -g py "$dev/python"

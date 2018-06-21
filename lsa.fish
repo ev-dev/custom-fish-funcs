@@ -1,4 +1,4 @@
 # Defined in - @ line 2
 function lsa
-	exa -a
+	exa -a $argv
 end

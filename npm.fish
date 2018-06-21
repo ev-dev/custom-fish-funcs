@@ -1,1 +1,0 @@
-/Users/admin/.config/fisherman/fnm/functions/npm.fish

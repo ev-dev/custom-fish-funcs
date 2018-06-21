@@ -1,5 +1,1 @@
-# Defined in - @ line 2
-function cat
-	set -l executable cat
-    grc.wrap $executable $argv
-end
+/Users/admin/.config/fisherman/grc/functions/cat.fish
