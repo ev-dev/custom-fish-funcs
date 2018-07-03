@@ -28,7 +28,7 @@ function cl --argument repoToClone
 		set_color cyan
 		echo -e '   With Contents:'
 		set_color normal
-		ls -1
+		exa -1
 		echo ' '
   else
 		set FLAG_OR_NEWNAME $argv[2]
@@ -90,7 +90,7 @@ function cl --argument repoToClone
 						set_color cyan
 						echo -e '\n   With Contents:'
 						set_color normal
-						ls -1
+						exa -1
 						echo ' '
 						return
 					end
