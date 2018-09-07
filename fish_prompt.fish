@@ -18,9 +18,11 @@ function fish_prompt
       end
 
       if git_is_dirty
-        set branch_color (set_color black -b FF6524 -o) #orange
+        #set branch_color (set_color black -b FF6524) #orange
+        set branch_color (set_color black -b FF6524 -o) #orange, bold text
       else
-        set branch_color (set_color black -b 50AF08 -o) #green
+        #set branch_color (set_color black -b 50AF08) #green
+        set branch_color (set_color black -b 50AF08 -o) #green, bold text
       end
 
       if git_is_staged
@@ -51,5 +53,6 @@ function fish_prompt
 #    set ne (printf "(%s)" (basename $NODE_VERSION))
 #  end
   
-  echo -nes "\n$ve $I$pwd $N$git_output\n$__fish_prompt_char "
+  echo -nes "\n$ve $pwd $N$git_output\n$__fish_prompt_char "
+  # echo -nes "\n$ve $I$pwd $N$git_output\n$__fish_prompt_char "
 end
