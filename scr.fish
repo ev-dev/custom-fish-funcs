@@ -1,5 +1,5 @@
 # Defined in - @ line 2
-function sc
+function scr
 	set allCmds (string split \n (string replace -a -r '[\{\},"]' '' (/bin/cat package.json | jq '.scripts')))
 
     eko '            '$U'Scripts'$N'\n'

@@ -1,4 +1,4 @@
-# Defined in /Users/admin/.config/fish/functions/path.fish @ line 2
+# Defined in - @ line 2
 function path
 	if test -z "$argv"
         inf '$PATH environment variable listed 1st down'
@@ -9,9 +9,8 @@ function path
             inf -a "entry "$YL$B$I"$argv" $N'is a fish function'
             fn "$argv"
 
-        else if test -e "$argv" -o -L "$argv"
+        else if test -e "$argv" # -o -L "$argv"
             set abs (realpath "$argv")
-            set absPath (string replace -r '^(\/Users\/admin)' '~' "$abs")
             set cwd (pwd)
             set removeRelPath (string replace -r '(\.\/)' '' "$argv")
             set requestedAbsPath "$cwd/$removeRelPath"
@@ -20,15 +19,17 @@ function path
             inf -a "entry "$YL$B$I"$argv" $N'found in $PATH as symlink'
             echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$requestedTruePath"
             echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$absPath"
+
         else if test -L $orig
             set orig (which $argv)
-            set origPath (string replace -r '^(\/Users\/admin)' '~' "$orig")
-            set abs (realpath $orig)
-            set absPath (string replace -r '^(\/Users\/admin)' '~' "$abs")
+
+            # set abs (realpath $orig)
+            set absPath (string replace "$HOME" '~' (realpath $orig))
 
             inf -a "entry "$YL$B$I"$argv" $N'found in $PATH as symlink'
-            echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$origPath"
+            echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR(rwd "$orig")
             echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$absPath"
+
         else
             set which_path (which $argv)
             set realpath_which (realpath $which_path)
@@ -39,6 +40,7 @@ function path
             echo -e ' '$WH$B$D$U$I'SYMLINK '$N$YL$B'╭'$N$YL'->' $PR"$which_path"
             echo -e ' '$WH$B$D$I'COMMAND '$N$YL$B'╰'$N$YL'->' $RD"$realpath_which"
         end
+
     else if test (count $argv) -eq 2
         set orig (which $argv[1])
         set origPath (string replace -r '^(\/Users\/admin)' '~' "$orig")

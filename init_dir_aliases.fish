@@ -10,6 +10,10 @@ function init_dir_aliases
     set -g config ~/.config
     set -g utils "$conf/system-utilities"
 
+    set -g ext /Volumes/ExternalSSD
+    set -g qext "$ext/quartolio-ssd/data"
+    set -g doaj "$qext/doaj-metadata"
+
     set -g dev ~/dev
     set -g prod "$dev/production"
     set -g q "$dev/quartolio"
