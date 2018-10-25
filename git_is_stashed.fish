@@ -1,1 +1,3 @@
-/Users/admin/.config/fisherman/git_util/git_is_stashed.fish
+function git_is_stashed -d "Test if there are changes in the Git stash"
+    command git rev-parse --verify --quiet refs/stash > /dev/null ^ /dev/null
+end

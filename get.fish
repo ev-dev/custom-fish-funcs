@@ -1,1 +1,0 @@
-/Users/admin/.config/fisherman/get/functions/get.fish
